@@ -11,20 +11,23 @@ public class Task implements Serializable {
     private String title;
     private String description;
     private TaskStatus status;
-    private LocalDateTime creation_date;
-    private LocalDateTime start_date;
+    private LocalDateTime creationDate;
+    private LocalDateTime startDate;
     private LocalDateTime deadline;
-    private Integer userId;
+    private User user;
 
-    public Task(Integer id, String title, String description, TaskStatus status, LocalDateTime creation_date, LocalDateTime start_date, LocalDateTime deadline, Integer userId) {
+    public Task() {
+    }
+
+    public Task(Integer id, String title, String description, TaskStatus status, LocalDateTime creationDate, LocalDateTime start_date, LocalDateTime deadline, User user) {
         this.id = id;
         this.title = title;
         this.description = description;
         this.status = status;
-        this.creation_date = creation_date;
-        this.start_date = start_date;
+        this.creationDate = creationDate;
+        this.startDate = start_date;
         this.deadline = deadline;
-        this.userId = userId;
+        this.user = user;
     }
 
     public String getTitle() {
@@ -51,20 +54,20 @@ public class Task implements Serializable {
         this.status = status;
     }
 
-    public LocalDateTime getCreation_date() {
-        return creation_date;
+    public LocalDateTime getCreationDate() {
+        return creationDate;
     }
 
-    public void setCreation_date(LocalDateTime creation_date) {
-        this.creation_date = creation_date;
+    public void setCreationDate(LocalDateTime creationDate) {
+        this.creationDate = creationDate;
     }
 
-    public LocalDateTime getStart_date() {
-        return start_date;
+    public LocalDateTime getStartDate() {
+        return startDate;
     }
 
-    public void setStart_date(LocalDateTime start_date) {
-        this.start_date = start_date;
+    public void setStartDate(LocalDateTime startDate) {
+        this.startDate = startDate;
     }
 
     public LocalDateTime getDeadline() {
@@ -75,12 +78,12 @@ public class Task implements Serializable {
         this.deadline = deadline;
     }
 
-    public Integer getUserId() {
-        return userId;
+    public User getUser() {
+        return user;
     }
 
-    public void setUserId(Integer userId) {
-        this.userId = userId;
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public Integer getId() {
@@ -101,11 +104,5 @@ public class Task implements Serializable {
     @Override
     public int hashCode() {
         return Objects.hashCode(id);
-    }
-
-    public Task(Integer id, String title, Integer userId) {
-        this.id = id;
-        this.title = title;
-        this.userId = userId;
     }
 }
