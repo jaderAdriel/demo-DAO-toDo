@@ -1,4 +1,6 @@
 package model.dao;
 
-public class TaskDao {
+import model.entities.Task;
+
+public interface TaskDao extends GenericDao<Task>{
 }
