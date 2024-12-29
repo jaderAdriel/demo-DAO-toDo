@@ -87,6 +87,14 @@ public class TaskDaoJDBC implements TaskDao {
             LocalDateTime deadline = task.getDeadline();
             st.setTimestamp(6, deadline == null ? null : Timestamp.valueOf(deadline));
 
+            st.setInt(7, task.getId());
+
+            st.executeUpdate();
+        } catch (SQLException e) {
+            throw new DbException(e.getMessage());
+        } finally {
+            DB.closeStatement(st);
+        }
     }
 
     @Override
