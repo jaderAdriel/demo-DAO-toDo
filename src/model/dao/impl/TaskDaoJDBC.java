@@ -151,8 +151,12 @@ public class TaskDaoJDBC implements TaskDao {
         task.setTitle(rs.getString("task_title"));
         task.setDescription(rs.getString("task_description"));
         task.setCreationDate(rs.getTimestamp("task_creation_date").toLocalDateTime());
-        task.setStartDate(rs.getTimestamp("task_start_date").toLocalDateTime());
-        task.setDeadline(rs.getTimestamp("task_deadline").toLocalDateTime());
+
+        Timestamp startDate = rs.getTimestamp("task_start_date");
+        task.setStartDate(startDate == null ? null : startDate.toLocalDateTime());
+
+        Timestamp deadline = rs.getTimestamp("task_deadline");
+        task.setDeadline(deadline == null ? null : deadline.toLocalDateTime());
         return task;
     }
 
