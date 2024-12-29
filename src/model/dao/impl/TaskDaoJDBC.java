@@ -104,6 +104,12 @@ public class TaskDaoJDBC implements TaskDao {
             st = conn.prepareStatement("DELETE FROM Task WHERE id = ?");
             st.setInt(1, id);
 
+            st.executeUpdate();
+        } catch (SQLException e) {
+            throw new DbException(e.getMessage());
+        } finally {
+            DB.closeStatement(st);
+        }
     }
 
     @Override
