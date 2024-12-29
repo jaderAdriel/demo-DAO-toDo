@@ -12,7 +12,7 @@ import java.util.*;
 
 public class TaskDaoJDBC implements TaskDao {
 
-    private Connection conn;
+    private final Connection conn;
 
     public TaskDaoJDBC(Connection conn) {
         this.conn = conn;
