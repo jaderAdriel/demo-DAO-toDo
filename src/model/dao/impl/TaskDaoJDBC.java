@@ -65,7 +65,27 @@ public class TaskDaoJDBC implements TaskDao {
     }
 
     @Override
-    public void update(Task user) {
+    public void update(Task task) {
+        PreparedStatement st = null;
+        try {
+            st = conn.prepareStatement(
+                    """
+                          UPDATE Task
+                          SET title = ?, description = ?, status = ?, creation_date = ?, start_date = ?, deadline = ?
+                          WHERE id = ?;
+                      """, Statement.RETURN_GENERATED_KEYS
+            );
+
+            st.setString(1, task.getTitle());
+            st.setString(2, task.getDescription());
+            st.setString(3, task.getStatus().toString());
+            st.setTimestamp(4, Timestamp.valueOf(task.getCreationDate()));
+
+            LocalDateTime startDate = task.getStartDate();
+            st.setTimestamp(5, startDate == null ? null : Timestamp.valueOf(startDate));
+
+            LocalDateTime deadline = task.getDeadline();
+            st.setTimestamp(6, deadline == null ? null : Timestamp.valueOf(deadline));
 
     }
 
