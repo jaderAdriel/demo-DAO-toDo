@@ -25,9 +25,9 @@ public class TaskDaoJDBC implements TaskDao {
         try {
             st = conn.prepareStatement(
                     """
-                        INSERT INTO Task (title, description, status, creation_date, start_date, deadline, user_id)\s
-                        VALUES (?, ?, ?, ?, ?, ?, ?);
-                      \s""", Statement.RETURN_GENERATED_KEYS
+                          INSERT INTO Task (title, description, status, creation_date, start_date, deadline, user_id)
+                          VALUES (?, ?, ?, ?, ?, ?, ?);
+                      """, Statement.RETURN_GENERATED_KEYS
             );
 
             st.setString(1, task.getTitle());
